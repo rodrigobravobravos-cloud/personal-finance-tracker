@@ -1,0 +1,71 @@
+/* 1. GLOBAL STYLING: Applies to the whole site */
+body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background-color: #f4f4f4;
+}
+
+/* 2. NAVIGATION: Using the border-radius from the rubric */
+nav {
+    background-color: #2c3e50;
+    padding: 15px;
+    border-radius: 5px; 
+    margin-bottom: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+/* 3. HOVER EFFECT: Changes color when mouse is over links */
+nav a:hover {
+    color: #00f531;
+}
+
+/* 4. IMAGES: Placed outside of hover so they always show */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border: 2px solid #ddd;
+    border-radius: 15px; /* Congruency with nav border-radius */
+}
+
+/* 5. FOOTER: Styling your external resource links */
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+}
+
+footer a {
+    color: #10c28d;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* 6. FORM & TABLE: Basic styling to make it look clean */
+form, table {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}

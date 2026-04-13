@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Expense</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="add-expense.html">Add Expense</a> |
+        <a href="summary.html">Summary</a>
+    </nav>
+
+    <h1>Track a New Expense</h1>
+    
+    <form id="expenseForm">
+        <label>Item Name:</label><br>
+        <input type="text" id="itemName" placeholder="e.g. Pizza" required><br><br>
+
+        <label>Category:</label><br>
+        <select id="category">
+            <option value="Food">Food</option>
+            <option value="Gas">Gas</option>
+            <option value="Bills">Bills</option>
+        </select><br><br>
+
+        <label>Price:</label><br>
+        <input type="text" id="price" placeholder="0.00" required><br><br>
+
+        <button type="button" onclick="validateAndSave()">Save Expense</button>
+    </form>
+
+    <p id="message"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>

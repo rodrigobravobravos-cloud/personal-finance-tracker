@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Finance Tracker - Summary</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="displaySummary()">
+
+    <header>
+        <img src="https://via.placeholder.com/800x150?text=Weekly+Spending+Summary" alt="Finance Banner">
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="add-expense.html">Add Expense</a> |
+        <a href="summary.html">Summary</a>
+    </nav>
+
+    <h1>7-Day Spending Summary</h1>
+    
+    <div id="status">
+        <h3>Grand Total: $<span id="weeklyTotal">0.00</span></h3>
+        <hr>
+        <h4>Spending by Category:</h4>
+        <ul id="categoryList"></ul>
+    </div>
+
+    <footer>
+        <p><a href="index.html">Back to Dashboard</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
