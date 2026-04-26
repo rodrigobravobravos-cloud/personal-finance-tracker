@@ -24,14 +24,15 @@ nav a:hover {
     color: #00f531;
 }
 
-/* 4. IMAGES: Placed outside of hover so they always show */
+/* 4. IMAGES: Updated for a smaller, professional logo look */
 img {
-    max-width: 100%;
-    height: auto;
+    max-width: 400px;  /* This cuts the size roughly in half for most screens */
+    width: 50%;       /* This ensures it stays 50% of its container */
+    height: auto;     /* Keeps the picture from looking stretched */
     display: block;
-    margin: 10px auto;
+    margin: 20px auto; /* Centers the logo perfectly */
     border: 2px solid #ddd;
-    border-radius: 15px; /* Congruency with nav border-radius */
+    border-radius: 15px; 
 }
 
 /* 5. FOOTER: Styling your external resource links */
