@@ -29,31 +29,54 @@ function validateAndSave() {
 } // <--- THIS bracket closes the save function. Everything below is separate.
 
 // --- 2. SUMMARY MATH (Run from summary.html) ---
+// --- CALCULATING SUMMARY (Only items from the last 7 days) ---
 function displaySummary() {
     const weeklyTotalDisplay = document.getElementById('weeklyTotal');
     const categoryList = document.getElementById('categoryList');
     
-    let expenses = JSON.parse(localStorage.getItem('myExpenses')) || [];
-    let total = 0;
-    let categories = {}; 
+    // 1. TRY-CATCH: Handles errors if LocalStorage is empty or corrupted
+    try {
+        let expenses = JSON.parse(localStorage.getItem('myExpenses')) || [];
+        let weeklyTotal = 0;
+        let categories = {}; 
 
-    expenses.forEach(item => {
-        total += item.price;
-        if (categories[item.cat]) {
-            categories[item.cat] += item.price;
-        } else {
-            categories[item.cat] = item.price;
+        // 2. DATE LOGIC: Calculate the timestamp for 7 days ago
+        const sevenDaysAgo = new Date();
+        sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+        // 3. LOOPING & FILTERING: Only count recent items
+        expenses.forEach(item => {
+            const itemDate = new Date(item.date);
+            
+            // Check if the expense happened within the last 7 days
+            if (itemDate >= sevenDaysAgo) {
+                weeklyTotal += item.price; // Arithmetic
+
+                // Grouping by category
+                if (categories[item.cat]) {
+                    categories[item.cat] += item.price;
+                } else {
+                    categories[item.cat] = item.price;
+                }
+            }
+        });
+
+        // 4. DOM MANIPULATION: Update the UI
+        if(weeklyTotalDisplay) {
+            weeklyTotalDisplay.innerHTML = weeklyTotal.toFixed(2);
         }
-    });
 
-    if(weeklyTotalDisplay) weeklyTotalDisplay.innerHTML = total.toFixed(2);
-
-    if(categoryList) {
-        categoryList.innerHTML = ""; 
-        for (let catName in categories) {
-            let listItem = `<li>${catName}: $${categories[catName].toFixed(2)}</li>`;
-            categoryList.innerHTML += listItem;
+        if(categoryList) {
+            categoryList.innerHTML = ""; 
+            for (let catName in categories) {
+                let listItem = `<li>${catName}: $${categories[catName].toFixed(2)}</li>`;
+                categoryList.innerHTML += listItem;
+            }
         }
+    } catch (error) {
+        // Requirement: Error handling for invalid data
+        console.error("Data retrieval error:", error);
+        if(weeklyTotalDisplay) weeklyTotalDisplay.innerHTML = "Error loading data";
     }
 }
 
