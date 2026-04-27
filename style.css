@@ -7,15 +7,11 @@ body {
 
 /* 2. NAVIGATION: Using the border-radius from the rubric */
 nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
     background-color: #2c3e50;
     padding: 15px;
     border-radius: 5px; 
     margin-bottom: 20px;
-    position: sticky;
-    top: 0;
+    
 }
 
 nav a {
