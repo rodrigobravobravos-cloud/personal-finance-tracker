@@ -103,4 +103,53 @@ function displayExpenses() {
     }
 
     if(totalDisplay) totalDisplay.innerHTML = runningTotal.toFixed(2);
+// --- DELETE & CLEAR FUNCTIONS ---
+
+// 1. Delete a single row
+function deleteExpense(index) {
+    if (confirm("Are you sure you want to delete this expense?")) {
+        let expenses = JSON.parse(localStorage.getItem('myExpenses')) || [];
+        
+        // Remove the item at the specific index
+        expenses.splice(index, 1);
+        
+        // Save the updated list back to local storage
+        localStorage.setItem('myExpenses', JSON.stringify(expenses));
+        
+        // Refresh the table to show the change
+        displayExpenses();
+    }
+}
+
+// 2. Clear everything
+function clearAllExpenses() {
+    if (confirm("WARNING: This will delete ALL your saved expenses. Proceed?")) {
+        localStorage.removeItem('myExpenses');
+        displayExpenses(); // Refresh table (will be empty)
+    }
+}
+
+// 3. Update your Table Builder (In your existing displayExpenses function)
+// Update the loop inside displayExpenses to include the delete button:
+function displayExpenses() {
+    const tableBody = document.getElementById('tableBody');
+    const totalDisplay = document.getElementById('totalDisplay');
+    let expenses = JSON.parse(localStorage.getItem('myExpenses')) || [];
+    let runningTotal = 0;
+
+    if(tableBody) {
+        tableBody.innerHTML = "";
+        expenses.forEach((item, index) => { // Added 'index' here
+            let row = `<tr>
+                <td>${item.name}</td>
+                <td>${item.cat}</td>
+                <td>$${item.price.toFixed(2)}</td>
+                <td>${item.date}</td>
+                <td><button onclick="deleteExpense(${index})">Delete</button></td>
+            </tr>`;
+            tableBody.innerHTML += row; 
+            runningTotal += item.price;
+        });
+    }
+    if(totalDisplay) totalDisplay.innerHTML = runningTotal.toFixed(2);
 }
