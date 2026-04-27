@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="displayExpenses()"> 
-<header>
-    <img src="./pic.png" alt="Finance Tracker Logo">
-</header>
+    <header>
+        <img src="./pic.png" alt="Finance Tracker Logo">
+    </header>
 
     <nav>
         <a href="index.html">Home</a> | 
@@ -17,31 +17,24 @@
     </nav>
 
     <h1>Expense Tracker Dashboard</h1>
-    
-    <table>
+
+    <button onclick="clearAllExpenses()" style="background-color: #e74c3c; color: white; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: none; cursor: pointer;">
+        Clear All Expenses
+    </button>
+
+    <table border="1">
         <thead>
             <tr>
                 <th>Item</th>
                 <th>Category</th>
                 <th>Price</th>
                 <th>Date</th>
+                <th>Action</th> 
             </tr>
         </thead>
         <tbody id="tableBody">
             </tbody>
- <button onclick="clearAllExpenses()" style="background-color: #e74c3c; color: white; margin-bottom: 10px;">Clear All Expenses</button>
-
-<table border="1">
-    <thead>
-        <tr>
-            <th>Item</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Date</th>
-            <th>Action</th> </tr>
-    </thead>
-    <tbody id="tableBody"></tbody>
-</table>
+    </table>
 
     <hr>
     <h3>Total Spent (Lifetime): $<span id="totalDisplay">0.00</span></h3>
